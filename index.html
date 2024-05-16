@@ -5,9 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Invaders</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="button.css"> <!-- Link to external CSS for button styling -->
+  <style>
+    #scoreBox {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    #buttonContainer {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="gameCanvas" width="600" height="800"></canvas>
-  <script src="index.js"></script>
+  <canvas id="gameCanvas" width="600" height="600"></canvas>
+  <div id="scoreBox"></div>
+  <button id="settingsButton">Settings</button> 
+  <div id="gameOverText" style="display: none;">Game Over<br>Tap anywhere to Play Again</div>
+  <div id="settingsPanel" style="display: none;"> 
+    <div>
+      <label for="invadersSpeed">Invaders Speed:</label>
+      <input type="range" id="invadersSpeed" name="invadersSpeed" min="1" max="10" value="5">
+    </div>
+    <div>
+      <label for="bulletSpeed">Bullet Speed:</label>
+      <input type="range" id="bulletSpeed" name="bulletSpeed" min="1" max="10" value="5">
+    </div>
+    <div>
+      <label for="spawnCount">Spawn Count:</label>
+      <input type="number" id="spawnCount" name="spawnCount" min="1" max="20" value="5">
+    </div>
+  </div>
+  <div id="buttonContainer">
+    <button id="leftButton" onmousedown="leftPressed = true;" onmouseup="leftPressed = false;">Left</button>
+    <button id="shootButton" onmousedown="isShooting = true; shootBullet();" onmouseup="isShooting = false;">Shoot</button>
+    <button id="rightButton" onmousedown="rightPressed = true;" onmouseup="rightPressed = false;">Right</button>
+    <button id="restartButton" style="display: none;" onclick="restartGame()">Restart</button>
+  </div>
+  <script>
+    console.log('Adding event listener');
+    window.addEventListener('click', function(event) {
+      console.log('Yes');
+      if (gameIsOver) {
+        document.getElementById('gameOverText').style.display = 'none';
+        restartGame();
+      }
+    });
+  </script>
+  
+  
+  <script src="main.js"></script>
 </body>
 </html>
