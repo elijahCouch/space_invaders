@@ -71,7 +71,27 @@
       }
     });
   </script>
-  
+    <script>
+ document.getElementById("settingsButton").addEventListener("click", function(event) {
+    event.stopPropagation(); 
+    var settingsPanel = document.getElementById("settingsPanel");
+
+    if (settingsPanel.style.display === "none" || settingsPanel.style.display === "") {
+      settingsPanel.style.display = "block";
+    } else {
+      settingsPanel.style.display = "none";
+    }
+  });
+
+ 
+  document.addEventListener("click", function(event) {
+    var settingsPanel = document.getElementById("settingsPanel");
+
+    if (event.target !== settingsPanel && event.target !== document.getElementById("settingsButton")) {
+      settingsPanel.style.display = "none";
+    }
+  });
+    </script>
   
   <script src="main.js"></script>
 </body>

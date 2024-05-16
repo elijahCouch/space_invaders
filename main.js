@@ -124,7 +124,7 @@ class SpaceShip {
       this.shootInterval = Math.random() * 5000 + 3000;
     }
     
-    // Check player position and shoot bullet if close
+
     if (Math.random() < this.shootProbability && Math.abs(playerX - this.x) < 50) {
       this.shootBullet();
     }
@@ -213,10 +213,10 @@ class SpaceShip {
 
 
 const spawnCountInput = document.getElementById("spawnCount");
-let spawnCount = parseInt(spawnCountInput.value); // Initialize spawn count
+let spawnCount = parseInt(spawnCountInput.value); 
 
 spawnCountInput.addEventListener("input", () => {
-  spawnCount = parseInt(spawnCountInput.value); // Update spawn count when input value changes
+  spawnCount = parseInt(spawnCountInput.value);
 });
 
 function spawnSpaceShip() {
