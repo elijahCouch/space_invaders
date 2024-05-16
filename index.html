@@ -52,13 +52,13 @@
     </div>
     <div>
       <label for="spawnCount">Spawn Count:</label>
-      <input type="number" id="spawnCount" name="spawnCount" min="1" max="20" value="5">
+      <input type="number" id="spawnCount" name="spawnCount" min="1" max="10" value="5">
     </div>
   </div>
   <div id="buttonContainer">
-    <button id="leftButton" onmousedown="leftPressed = true;" onmouseup="leftPressed = false;">Left</button>
-    <button id="shootButton" onmousedown="isShooting = true; shootBullet();" onmouseup="isShooting = false;">Shoot</button>
-    <button id="rightButton" onmousedown="rightPressed = true;" onmouseup="rightPressed = false;">Right</button>
+    <button id="leftButton" ontouchstart="leftPressed = true;" ontouchend="leftPressed = false;" onmousedown="leftPressed = true;" onmouseup="leftPressed = false;">Left</button>
+    <button id="shootButton" ontouchstart="isShooting = true; shootBullet();" ontouchend="isShooting = false;" onmousedown="isShooting = true; shootBullet();" onmouseup="isShooting = false;">Shoot</button>
+    <button id="rightButton" ontouchstart="rightPressed = true;" ontouchend="rightPressed = false;" onmousedown="rightPressed = true;" onmouseup="rightPressed = false;">Right</button>
     <button id="restartButton" style="display: none;" onclick="restartGame()">Restart</button>
   </div>
   <script>
@@ -71,11 +71,10 @@
       }
     });
   </script>
-    <script>
- document.getElementById("settingsButton").addEventListener("click", function(event) {
-    event.stopPropagation(); 
-    var settingsPanel = document.getElementById("settingsPanel");
 
+<script>
+  document.getElementById("settingsButton").addEventListener("click", function() {
+    var settingsPanel = document.getElementById("settingsPanel");
     if (settingsPanel.style.display === "none" || settingsPanel.style.display === "") {
       settingsPanel.style.display = "block";
     } else {
@@ -83,15 +82,14 @@
     }
   });
 
- 
+
   document.addEventListener("click", function(event) {
     var settingsPanel = document.getElementById("settingsPanel");
-
     if (event.target !== settingsPanel && event.target !== document.getElementById("settingsButton")) {
-      settingsPanel.style.display = "none";
+      settingsPanel.style.display = "none"; 
     }
   });
-    </script>
+</script>
   
   <script src="main.js"></script>
 </body>
